@@ -27,6 +27,19 @@ module.exports = function (grunt) {
         },
       },
     },
+    sass: {
+      dist: {
+        // A tarefa 'sass' é configurada para compilar arquivos SCSS em CSS.
+        // Define opções específicas para a compilação.
+        options: {
+          style: "compressed", // Habilita a compressão do CSS.
+        },
+        // Define os arquivos de entrada (SCSS) e os arquivos de saída (CSS).
+        files: {
+          "main2.css": "main.scss", // Define o nome do arquivo de saída minificado.
+        },
+      },
+    },
   });
 
   // Registra uma tarefa personalizada chamada 'olaGrunt'.
@@ -44,6 +57,9 @@ module.exports = function (grunt) {
   // Carrega o plugin 'grunt-contrib-less' para a tarefa 'less'.
   grunt.loadNpmTasks("grunt-contrib-less");
 
+  // Carrega o plugin 'grunt-contrib-sass' para a tarefa 'sass'.
+  grunt.loadNpmTasks("grunt-contrib-sass");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
-  grunt.registerTask("default", ["less"]);
+  grunt.registerTask("default", ["less", "sass"]);
 };
