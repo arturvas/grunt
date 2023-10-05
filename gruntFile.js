@@ -1,6 +1,6 @@
 // module.exports = variavel
 // function = definindo funcao
-// (grunt) = argumento da funcao
+// (grunt) = argumento da função
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -14,4 +14,6 @@ module.exports = function (grunt) {
       done();
     }, 3000);
   });
+
+  grunt.registerTask("default", ["olaGrunt"]);
 };
