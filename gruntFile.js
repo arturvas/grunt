@@ -40,10 +40,25 @@ module.exports = function (grunt) {
         },
       },
     },
+    concurrent: {
+      target: ["olaGrunt", "less", "sass", "tarefaDemorada"],
+    },
   });
 
   // Registra uma tarefa personalizada chamada 'olaGrunt'.
   grunt.registerTask("olaGrunt", function () {
+    // Captura a função 'done' para indicar o término da tarefa.
+    const done = this.async();
+    // Após 3 segundos, imprime "Olá Grunt" no console.
+    setTimeout(function () {
+      console.log("Olá Grunt");
+      // Indica que a tarefa foi concluída.
+      done();
+    }, 3000);
+  });
+
+  // Registra uma tarefa personalizada chamada 'olaGrunt'.
+  grunt.registerTask("tarefaDemorada", function () {
     // Captura a função 'done' para indicar o término da tarefa.
     const done = this.async();
     // Após 3 segundos, imprime "Olá Grunt" no console.
@@ -60,6 +75,9 @@ module.exports = function (grunt) {
   // Carrega o plugin 'grunt-contrib-sass' para a tarefa 'sass'.
   grunt.loadNpmTasks("grunt-contrib-sass");
 
+  // Carrega o plugin 'grunt-concurrent' para acessar tarefas de forma paralela
+  grunt.loadNpmTasks("grunt-concurrent");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
-  grunt.registerTask("default", ["less", "sass"]);
+  grunt.registerTask("default", ["concurrent"]);
 };
