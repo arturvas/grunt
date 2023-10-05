@@ -9,11 +9,21 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Lê o arquivo package.json para obter informações sobre o projeto.
     pkg: grunt.file.readJSON("package.json"),
-    // Configuração da tarefa 'less' para compilar arquivos LESS em CSS.
+    // Configuração da tarefa 'less' para compilar arquivos LESS em CSS (development).
     less: {
       development: {
         files: {
           "main.css": "main.less", // Define a saída do CSS.
+        },
+      },
+      // Configuração da tarefa 'less' para compilar arquivos LESS em CSS (production).
+      production: {
+        // Define opções específicas para a compilação em modo produção.
+        options: {
+          compress: true, // Habilita a compressão do CSS.
+        },
+        files: {
+          "main.min.css": "main.less", // Define o nome do arquivo de saída minificado.
         },
       },
     },
