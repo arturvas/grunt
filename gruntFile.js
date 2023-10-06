@@ -33,12 +33,34 @@ module.exports = function (grunt) {
         tasks: ["less:development"],
       },
     },
+    replace: {
+      dev: {
+        options: {
+          patterns: [
+            {
+              match: "ENDERECO_DO_CSS",
+              replacement: "./styles/main.css",
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ["src/index.html"],
+            dest: "dev/",
+          },
+        ],
+      },
+    },
   });
 
   // Carrega o plugin 'grunt-contrib-less' para a tarefa 'less'.
   grunt.loadNpmTasks("grunt-contrib-less");
 
   grunt.loadNpmTasks("grunt-contrib-watch");
+
+  grunt.loadNpmTasks("grunt-replace");
 
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
   grunt.registerTask("default", ["watch"]);
