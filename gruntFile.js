@@ -27,13 +27,21 @@ module.exports = function (grunt) {
         },
       },
     },
+    watch: {
+      less: {
+        files: ["src/styles/**/*.less"],
+        tasks: ["less:development"],
+      },
+    },
   });
 
   // Carrega o plugin 'grunt-contrib-less' para a tarefa 'less'.
   grunt.loadNpmTasks("grunt-contrib-less");
 
+  grunt.loadNpmTasks("grunt-contrib-watch");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
-  grunt.registerTask("default", ["less:development"]);
+  grunt.registerTask("default", ["watch"]);
 
   grunt.registerTask("build", ["less:production"]);
 };
