@@ -32,6 +32,10 @@ module.exports = function (grunt) {
         files: ["src/styles/**/*.less"],
         tasks: ["less:development"],
       },
+      html: {
+        files: ["src/index.html"],
+        tasks: ["replace:dev"],
+      },
     },
     replace: {
       dev: {
@@ -82,6 +86,7 @@ module.exports = function (grunt) {
         },
       },
     },
+    clean: ["prebuild"],
   });
 
   // Carrega o plugin 'grunt-contrib-less' para a tarefa 'less'.
@@ -93,6 +98,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks("grunt-contrib-htmlmin");
 
+  grunt.loadNpmTasks("grunt-contrib-clean");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
   grunt.registerTask("default", ["watch"]);
 
@@ -100,5 +107,6 @@ module.exports = function (grunt) {
     "less:production",
     "htmlmin:dist",
     "replace:dist",
+    "clean",
   ]);
 };
