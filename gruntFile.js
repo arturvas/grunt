@@ -52,6 +52,35 @@ module.exports = function (grunt) {
           },
         ],
       },
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: "ENDERECO_DO_CSS",
+              replacement: "./styles/main.min.css",
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ["prebuild/index.html"],
+            dest: "dist/",
+          },
+        ],
+      },
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true,
+        },
+        files: {
+          "prebuild/index.html": "src/index.html",
+        },
+      },
     },
   });
 
@@ -62,8 +91,14 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks("grunt-replace");
 
+  grunt.loadNpmTasks("grunt-contrib-htmlmin");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
   grunt.registerTask("default", ["watch"]);
 
-  grunt.registerTask("build", ["less:production"]);
+  grunt.registerTask("build", [
+    "less:production",
+    "htmlmin:dist",
+    "replace:dist",
+  ]);
 };
