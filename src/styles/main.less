@@ -4,6 +4,7 @@
 @bgColor: #ff4757;
 @buttonTextColor: #2f3542;
 @bgButtonTextColor: #eccc68;
+@bgBorder: #ff6b81;
 
 // Paleta de cores { https://flatuicolors.com/palette/cn }
 
@@ -37,6 +38,10 @@ button {
   border-radius: 10px;
   font-family: @mainFont;
   border: none;
+
+  &:hover {
+    background-color: #ffa502;
+  }
 }
 
 input {
@@ -49,6 +54,7 @@ input {
   text-align: center;
   color: @textColor;
   border-bottom: 3px solid white;
+  border-radius: 5px;
 }
 
 // remover a aparencia do input no Chrome e Safari
@@ -56,4 +62,19 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
+}
+
+.resultado {
+  padding: 16px;
+  margin-top: 70px;
+  border-left: 4px solid @textColor;
+  border-radius: 5px;
+  background-color: @bgBorder;
+  display: none;
+
+  span {
+    font-weight: bold;
+    font-size: 3em;
+    display: block;
+  }
 }

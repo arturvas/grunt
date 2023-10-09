@@ -26,6 +26,9 @@ button {
   font-family: "Montserrat", sans-serif;
   border: none;
 }
+button:hover {
+  background-color: #ffa502;
+}
 input {
   display: block;
   margin: 16px auto 0;
@@ -36,9 +39,23 @@ input {
   text-align: center;
   color: #f1f2f6;
   border-bottom: 3px solid white;
+  border-radius: 5px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
+}
+.resultado {
+  padding: 16px;
+  margin-top: 70px;
+  border-left: 4px solid #f1f2f6;
+  border-radius: 5px;
+  background-color: #ff6b81;
+  display: none;
+}
+.resultado span {
+  font-weight: bold;
+  font-size: 3em;
+  display: block;
 }
