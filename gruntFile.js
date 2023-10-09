@@ -67,6 +67,10 @@ module.exports = function (grunt) {
               match: "ENDERECO_DO_CSS",
               replacement: "./styles/main.min.css",
             },
+            {
+              match: "ENDERECO_DO_JS",
+              replacement: "./scripts/main.min.js",
+            },
           ],
         },
         files: [
@@ -91,6 +95,13 @@ module.exports = function (grunt) {
       },
     },
     clean: ["prebuild"],
+    uglify: {
+      target: {
+        files: {
+          "dist/scripts/main.min.js": "src/scripts/main.js",
+        },
+      },
+    },
   });
 
   // Carrega o plugin 'grunt-contrib-less' para a tarefa 'less'.
@@ -104,6 +115,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks("grunt-contrib-clean");
 
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+
   // Registra a tarefa padrão 'default', que depende da tarefa 'less'.
   grunt.registerTask("default", ["watch"]);
 
@@ -112,5 +125,6 @@ module.exports = function (grunt) {
     "htmlmin:dist",
     "replace:dist",
     "clean",
+    "uglify",
   ]);
 };
