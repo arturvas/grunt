@@ -1,6 +1,7 @@
-# grunt
+# Sorteador utilizando grunt
 
 > EBAC - Modulo 18
+> Sorteador
 
 ## Introdução
 
